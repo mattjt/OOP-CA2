@@ -17,6 +17,8 @@ public class Question4  // Flood Fill (Stack, 2D Array)
         int startCol = -1;
         int[][] matrix = floodFillStart();
 
+        //matrix[5] = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        System.out.println("Question 4\n__________\n");
         while(true){
             System.out.print("Enter starting row (0-9):");
             startRow = scan.nextInt();
@@ -29,7 +31,7 @@ public class Question4  // Flood Fill (Stack, 2D Array)
         }
 
 
-
+        display(matrix);
 
         fill(startRow, startCol, matrix);
 
@@ -40,7 +42,6 @@ public class Question4  // Flood Fill (Stack, 2D Array)
 
     // Starter function to create the 2D array and fill it with zeros
     public static int[][]  floodFillStart() {
-        Scanner kb = new Scanner(System.in);
         int[][] matrix = new int[10][10];
         for (int x = 0; x < 10; x++)
         {
@@ -55,6 +56,7 @@ public class Question4  // Flood Fill (Stack, 2D Array)
     //function to display the image
     public static void display(int[][] arr)
     {
+        System.out.println("\n__________________________________________\n");
         for (int x = 0; x < 10; x++)
         {
             for (int y = 0; y < 10; y++)
@@ -65,9 +67,38 @@ public class Question4  // Flood Fill (Stack, 2D Array)
         }
     }
 
-    private static void fill(int r, int c, int[][] arr)
-    {
+    private static void fill(int r, int c, int[][] arr) {
+        Stack<Cell> stack = new Stack<>();
+        stack.push(new Cell(r, c));
+        int fillNum = 1;
 
+        while (!stack.isEmpty()) {
+            Cell current = stack.pop();
+            int row = current.row;
+            int col = current.col;
+
+            if (arr[row][col] == 0) {
+                arr[row][col] = fillNum;//fill current cell
+                fillNum++;//cell fill increments
+
+                //adds new cells to stack from around the current cell:
+                // North
+                if (row > 0 && arr[row - 1][col] == 0) {
+                    stack.push(new Cell(row - 1, col));
+                }
+                // East
+                if (col < 9 && arr[row][col + 1] == 0) {
+                    stack.push(new Cell(row, col + 1));
+                }
+                // South
+                if (row < 9 && arr[row + 1][col] == 0) {
+                    stack.push(new Cell(row + 1, col));
+                }
+                // West
+                if (col > 0 && arr[row][col - 1] == 0) {
+                    stack.push(new Cell(row, col - 1));
+                }
+            }
+        }
     }
-
 }

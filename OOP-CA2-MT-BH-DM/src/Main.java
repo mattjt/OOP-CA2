@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.Question1.Question1;
 import org.example.Question2.Question2;
+import org.example.Question4.Question4;
 import org.example.Question7and8.Question7;
 import org.example.Question7and8.Question8;
 
@@ -31,8 +32,9 @@ public class Main {
                         break;
 //                    case "3":
 //                        break;
-//                    case "4":
-//                        break;
+                    case "4":
+                        Question4.main(args);
+                       break;
 //                    case "5":
 //                        break;
 //                    case "6":
