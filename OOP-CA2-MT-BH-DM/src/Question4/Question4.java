@@ -16,8 +16,9 @@ public class Question4  // Flood Fill (Stack, 2D Array)
         int startRow=-1;
         int startCol = -1;
         int[][] matrix = floodFillStart();
-
+        //for testing with a wall
         //matrix[5] = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+
         System.out.println("Question 4\n__________\n");
         while(true){
             System.out.print("Enter starting row (0-9):");
@@ -30,15 +31,12 @@ public class Question4  // Flood Fill (Stack, 2D Array)
             }else{break;}
         }
 
-
         display(matrix);
 
         fill(startRow, startCol, matrix);
 
         display(matrix);
-
     }
-
 
     // Starter function to create the 2D array and fill it with zeros
     public static int[][]  floodFillStart() {
@@ -67,6 +65,7 @@ public class Question4  // Flood Fill (Stack, 2D Array)
         }
     }
 
+    //replaces 0s with numbers and increments, avoids -1s
     private static void fill(int r, int c, int[][] arr) {
         Stack<Cell> stack = new Stack<>();
         stack.push(new Cell(r, c));
