@@ -1,7 +1,9 @@
 package org.example.Question6;
 
-import java.util.ArrayList;
+
 import java.util.Scanner;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 /**
  *  Name: Matthew Tomkins
@@ -12,8 +14,8 @@ public class Question6      // Flight take-off (Queue)
 {
     public static void main(String[] args)
     {
-        ArrayList<String>takeoffQueue= new ArrayList<>();
-        ArrayList<String>landingQueue= new ArrayList<>();
+        Queue<String>takeoffQueue= new  ArrayDeque<>();
+        Queue<String>landingQueue= new  ArrayDeque<>();
 
         System.out.println("Question 6\n__________\n");
         System.out.println("""
@@ -50,28 +52,28 @@ public class Question6      // Flight take-off (Queue)
         }
     }
 
-    public static void takeoff(String command, ArrayList<String> takeoffQueue){
-        String flightCode = command.substring(8).trim();//cuts off the command and a space
+    public static void takeoff(String command, Queue<String> takeoffQueue){
+        String flightCode = command.substring(7).trim();//cuts off the command and a space
         takeoffQueue.add(flightCode);
 
         System.out.println("> "+flightCode + " queued for takeoff.");
 }
 
-    public static void land(String command, ArrayList<String> landingQueue){
-        String flightCode = command.substring(5).trim();//cuts off the command and a space
+    public static void land(String command, Queue<String> landingQueue){
+        String flightCode = command.substring(4).trim();//cuts off the command and a space
         landingQueue.add(flightCode);
 
         System.out.println("> "+flightCode + " queued for landing.");
     }
 
-    public static void next(ArrayList<String> takeoffQueue, ArrayList<String> landingQueue){
-        if (!landingQueue.isEmpty()) {//checks arraylist for elements
-            String flightCode = landingQueue.removeFirst();//removes the flight at 0
+    public static void next(Queue<String> takeoffQueue, Queue<String> landingQueue){
+        if (!landingQueue.isEmpty()) {//checks queue for elements
+            String flightCode = landingQueue.remove();//removes the flight at 0
 
             System.out.println("> "+"Landing flight: " + flightCode);
         }
         else if (!takeoffQueue.isEmpty()) {
-            String flightCode = takeoffQueue.removeFirst();
+            String flightCode = takeoffQueue.remove();
 
             System.out.println("> "+"Taking off flight: " + flightCode);
         }
