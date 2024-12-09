@@ -6,6 +6,7 @@ import org.example.Question4.Question4;
 import org.example.Question6.Question6;
 import org.example.Question7and8.Question7;
 import org.example.Question7and8.Question8;
+import org.example.Question9.Question9;
 
 import java.util.Scanner;
 
@@ -47,8 +48,9 @@ public class Main {
                     case "8":
                         Question8.main(args);
                         break;
-//                    case "9":
-//                        break;
+                      case "9":
+                          Question9.main(args);
+                        break;
 //                    case "10":
 //                        break;
 //                    case "11":
@@ -58,6 +60,8 @@ public class Main {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Error: Enter a valid number.");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         }
     }
