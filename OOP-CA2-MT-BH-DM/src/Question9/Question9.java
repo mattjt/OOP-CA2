@@ -25,33 +25,48 @@ public class Question9 {
         Stack<String> operator = new Stack<>();
         boolean done =false;
         String numbers ="0123456789";
+        String operators ="+-*/";
         int count=0;
         while(count<equation.length()){
             String input = equation.substring(count,count+1);
 
 
-            if(equation.charAt(count)==' '){
+            if(equation.charAt(count)==' '){// - space
+                //System.out.println("char: "+input);
                 count++;
             }
-            else if(numbers.contains(input)){
-                number.push(Integer.parseInt(input));
+            else if(numbers.contains(input)){// -  num
+                number.push(Integer.parseInt(input));//push to num stack
+                //System.out.println("char: "+input);
                 count++;
             }
-            else if(equation.charAt(count)=='+'){
-
+            else if(equation.charAt(count)=='('){// - open bracket
+                //System.out.println("char: "+input);
+                operator.push(equation.substring(count,count+1));//push open bracket to op stack
                 count++;
             }
-            else if(equation.charAt(count)=='-'){
+            else if(operators.contains(input)){// - operator
+                //System.out.println("char: "+input);
+                //while(//the top of the stack has higher precedence){
+                    //evaluate the top
+                //}
+                operator.push(equation.substring(count,count+1));//push op to op stack
                 count++;
             }
-            else if(equation.charAt(count)=='*' ){
-                count++;
-            }
-            else if(equation.charAt(count)=='/'){
+            else if(equation.charAt(count)==')'){// - close bracket
+                //System.out.println("char: "+input);
+                while(!operator.equals("(")){
+                    //evaluate the top
+                }
+                operator.pop();
                 count++;
             }
             else {
+                while(!operator.isEmpty()){
+                    //evaluate the top
+                }
 
+                count++;
             }
 
 
