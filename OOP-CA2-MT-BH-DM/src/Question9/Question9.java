@@ -47,15 +47,15 @@ public class Question9 {
             }
             else if(operators.contains(input)){// - operator
                 //System.out.println("char: "+input);
-                //while(//the top of the stack has higher precedence){
+                while(!operator.isEmpty() && precedenceOp(operator.peek()) >= precedenceOp(input)){
                     //evaluate the top
-                //}
+                }
                 operator.push(equation.substring(count,count+1));//push op to op stack
                 count++;
             }
             else if(equation.charAt(count)==')'){// - close bracket
                 //System.out.println("char: "+input);
-                while(!operator.equals("(")){
+                while(!operator.peek().equals("(")){
                     //evaluate the top
                 }
                 operator.pop();
@@ -72,5 +72,18 @@ public class Question9 {
 
         }
         return result;
+    }
+
+    public static int precedenceOp(String operator) {//checks order of precedence for operators
+        switch (operator) {
+            case "+":
+            case "-":
+                return 1;
+            case "*":
+            case "/":
+                return 2;
+            default:
+                return -1;
+        }
     }
 }
